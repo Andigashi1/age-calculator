@@ -110,7 +110,9 @@ function Calculator() {
                     onChange={handleChange}
                     className={`input ${errors.day ? 'border-p-red': 'border-lightgray'}`}
                     placeholder="DD"/>
-                    {errors.day && <p className="text-p-red text-sm mt-2">{errors.day}</p>}
+                    {errors.day && 
+                    <p className="text-p-red text-sm mt-2"
+                    aria-hidden={!errors.day}>{errors.day}</p>}
                 </section>
                 <section>
                     <label htmlFor="month" className={`form-info ${errors.month ? 'text-p-red': 'text-smokey'}`}>MONTH</label>
@@ -120,7 +122,9 @@ function Calculator() {
                     onChange={handleChange}
                     className={`input ${errors.month ? 'border-p-red': 'border-lightgray'}`}
                     placeholder="MM"/>
-                    {errors.month && <p className="text-p-red text-sm mt-2">{errors.month}</p>}
+                    {errors.month &&
+                     <p className="text-p-red text-sm mt-2"
+                     aria-hidden={!errors.month}>{errors.month}</p>}
                 </section>
                 <section>
                     <label htmlFor="year" className={`form-info ${errors.year ? 'text-p-red': 'text-smokey'}`}>YEAR</label>
@@ -130,7 +134,9 @@ function Calculator() {
                     onChange={handleChange}
                     className={`input ${errors.year ? 'border-p-red': 'border-lightgray'}`}
                     placeholder="YYYY"/>
-                    {errors.year && <p className="text-p-red text-sm mt-2">{errors.year}</p>}
+                    {errors.year && 
+                    <p className="text-p-red text-sm mt-2"
+                    aria-hidden={!errors.year}>{errors.year}</p>}
                 </section>
             </div>
 
