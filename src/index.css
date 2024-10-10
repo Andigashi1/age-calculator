@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply flex justify-center items-center min-h-screen bg-lightgray mx-4 font-poppins
+}
+
+.form-info {
+    @apply font-semibold tracking-extra-wide mb-2
+}
+
+.input {
+    @apply border-2 focus:border-p-purple outline-none p-4 max-w-36 w-full rounded-md text-2xl font-bold max-lg:text-base
+}
+
+section {
+    @apply flex flex-col
+}
