@@ -1,12 +1,31 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 import icon from "./assets/images/icon-arrow.svg"
+
 
 function Calculator() {
 
     const [ dateInput, setDateInput ] = useState({day: '', month: '', year: ''})
     const [ age, setAge ] = useState(null)
     const [ errors, setErrors ] = useState({day: '', month: '', year: ''})
+
+    const yearRef = useRef(null);
+    const monthRef = useRef(null);
+    const dayRef = useRef(null);
+
+    useGSAP(() => {
+       if (age) {
+        gsap.from([yearRef.current, monthRef.current, dayRef.current], {
+            opacity: 0,
+                y: 40,
+                stagger: 0.2,
+                duration: 0.4,
+                ease: "power2.out"
+        })
+       }
+    }, [age]);
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -152,9 +171,9 @@ function Calculator() {
         </div>
 
         <div className="font-extrabold italic text-8xl max-sm:text-6xl max-md:text-7xl py-8 max-md:pt-12">
-            <p><span className="text-p-purple">{age ? age.years : '--'}</span> years</p>
-            <p><span className="text-p-purple">{age ? age.months : '--'}</span> months</p>
-            <p><span className="text-p-purple">{age ? age.days: '--'}</span> days</p>
+            <p><span ref={yearRef} className="text-p-purple">{age ? age.years : '--'}</span> years</p>
+            <p><span ref={monthRef} className="text-p-purple">{age ? age.months : '--'}</span> months</p>
+            <p><span ref={dayRef} className="text-p-purple">{age ? age.days: '--'}</span> days</p>
         </div>
     </div>
   )
