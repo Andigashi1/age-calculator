@@ -39,8 +39,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Repo](https://your-solution-url.com)
-- Live Site URL: [Live site](https://your-live-site-url.com)
+- Solution URL: [Repo](https://github.com/Andigashi1/age-calculator)
+- Live Site URL: [Live site](https://age-calculator-black-six.vercel.app)
 
 ## My process
 
