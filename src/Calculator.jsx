@@ -11,9 +11,13 @@ function Calculator() {
     const [ age, setAge ] = useState(null)
     const [ errors, setErrors ] = useState({day: '', month: '', year: ''})
 
+    //Refs serve for GSAP
+
     const yearRef = useRef(null);
     const monthRef = useRef(null);
     const dayRef = useRef(null);
+
+    // Age animation if age is validated
 
     useGSAP(() => {
        if (age) {
@@ -27,6 +31,9 @@ function Calculator() {
        }
     }, [age]);
 
+    //Set the date value(day, month or year) in every keystroke
+    //Set errors if any
+    
     const handleChange = (e) => {
         const {name, value} = e.target
         setDateInput(prev => ({...prev, [name]: value }))
@@ -38,6 +45,8 @@ function Calculator() {
         const newErrors = {day: '', month: '', year: ''}
         let isValid = true
 
+        //Convert input values from strings to numbers
+
         const {day, month, year} = dateInput
         const inputDay = parseInt(day, 10)
         const inputMonth = parseInt(month, 10)
@@ -47,6 +56,8 @@ function Calculator() {
         const currentYear = currentDate.getFullYear()
         const currentMonth = currentDate.getMonth() + 1
         const currentDay = currentDate.getDate()
+
+        //Day validation
 
         if(!day) {
             newErrors.day = 'Field is Required'
@@ -62,6 +73,8 @@ function Calculator() {
             }
         }
 
+        //Month validation
+
         if (!month) {
             newErrors.month = 'Field is Required'
             isValid = false
@@ -72,6 +85,8 @@ function Calculator() {
             newErrors.year = 'Must be in the past'
             isValid = false 
         }
+
+        //Year validation
 
         if (!year) {
             newErrors.year = 'Field is Required'
@@ -90,9 +105,11 @@ function Calculator() {
     }
     const calculateAge = () => {
 
+        //Calculate only if validateInput() returns true
+
         if (validateInput()) {
             const {day, month, year} = dateInput
-            const birthDate = new Date(year, month - 1, day)
+            const birthDate = new Date(year, month - 1, day) //months are 0-indexed
             const currentDate = new Date()
 
             let days = currentDate.getDate() - day
